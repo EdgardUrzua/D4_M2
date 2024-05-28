@@ -1,0 +1,737 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Star Jedi";
+  src: url("../fonts/starjedi/Starjedi.ttf") format("truetype"),
+    url("../fonts/starjedi/Starjhol.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "aside main"
+      "footer main";
+    grid-template-columns: 1fr 5fr;
+  }
+
+  header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    align-items: center;
+    background-color: #111;
+    color: #feda4a;
+    padding: 15px;
+  }
+
+  header a {
+    color: #feda4a;
+    text-decoration: none;
+  }
+
+  header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    margin-top: 25px;
+    margin-left: 50px;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+
+  .logo {
+    animation: spin 15s linear infinite;
+  }
+
+  header .barras {
+    display: none;
+  }
+
+  aside {
+    grid-area: aside;
+    background-color: #222;
+    padding: 20px;
+    height: 1300px;
+  }
+
+  aside h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+
+  aside a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #feda4a;
+    text-decoration: none;
+    margin-top: 15px;
+    margin-right: 15px;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 15px;
+  }
+
+  main {
+    grid-area: main;
+    padding: 20px;
+    background-color: #111;
+    color: #feda4a;
+  }
+
+  .star-wars-intro {
+    background-image: url(../img/fondo_titulo.jpg);
+    overflow: hidden;
+    height: 200px;
+    width: 100%;
+  }
+
+  .intro-text {
+    font-family: "Star Jedi", sans-serif;
+    font-size: 2em;
+    color: #feda4a;
+    text-align: center;
+    text-shadow: 0 0 10px #feda4a;
+    animation: crawl 60s linear infinite;
+  }
+
+  @keyframes crawl {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+
+  main h3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .cards-jedis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+  }
+
+  .card-jedis {
+    perspective: 1000px;
+    margin: 10px;
+  }
+
+  .card-jedis-inner {
+    width: 150px;
+    height: 220px;
+    position: relative;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .card-jedis:hover .card-jedis-inner {
+    transform: rotateY(180deg) scale(1.1);
+  }
+
+  .card-jedis-front,
+  .card-jedis-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 2px solid #feda4a;
+    border-radius: 10px;
+    background-color: #222;
+    color: #feda4a;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(254, 218, 74, 0.5);
+  }
+
+  .card-jedis-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-jedis-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-jedis img {
+    max-width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .card-jedis button {
+    margin-top: 10px;
+    background-color: #feda4a;
+    color: #111;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .card-jedis button:hover {
+    background-color: #fff;
+    color: #feda4a;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    justify-content: center; /* Center modal */
+    align-items: center; /* Center modal */
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    color: #111;
+  }
+
+  .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close-button:hover,
+  .close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  footer {
+    grid-area: footer;
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+
+/*Pantalla Movil*/
+@media screen and (min-width: 534px) and (max-width: 767px) {
+  body {
+    display: grid;
+    grid-template-areas:
+      "header"
+      "aside"
+      "main"
+      "footer";
+  }
+
+  header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    align-items: center;
+    background-color: #111;
+    color: #feda4a;
+    padding: 15px;
+  }
+
+  header a {
+    display: none;
+  }
+
+  header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    margin-top: 25px;
+    margin-left: 50px;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+
+  .logo {
+    animation: spin 15s linear infinite;
+  }
+
+  header .barras {
+    display: flex;
+  }
+
+  aside {
+    grid-area: aside;
+    background-color: #222;
+    padding: 20px;
+    height: 3px;
+  }
+
+  aside h2 {
+    display: none;
+  }
+
+  aside a {
+    display: none;
+  }
+
+  main {
+    grid-area: main;
+    position: relative;
+    min-height: 100vh;
+    background-color: #111;
+  }
+  /* Estilo de la intro */
+  .star-wars-intro {
+    background-image: url(../img/fondo_titulo.jpg);
+    overflow: hidden;
+    height: 200px;
+  }
+
+  .intro-text {
+    font-family: "Star Jedi", sans-serif; /* Fuente de Star Wars */
+    font-size: 2em;
+    color: #feda4a;
+    text-align: center;
+    text-shadow: 0 0 10px #feda4a;
+
+    /* Animación de desplazamiento ascendente */
+    animation: crawl 70s linear infinite;
+  }
+
+  @keyframes crawl {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+
+  /* Estilo de las cards */
+
+  main h3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .cards-jedis {
+    display: grid;
+    grid-column: span 2;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+  }
+
+  .card-jedis {
+    perspective: 1000px;
+    margin: 10px;
+  }
+
+  .card-jedis-inner {
+    width: 150px;
+    height: 220px;
+    position: relative;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .card-jedis:hover .card-jedis-inner {
+    transform: rotateY(180deg) scale(1.1);
+  }
+
+  .card-jedis-front,
+  .card-jedis-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 2px solid #feda4a;
+    border-radius: 10px;
+    background-color: #222;
+    color: #feda4a;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(254, 218, 74, 0.5);
+  }
+
+  .card-jedis-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-jedis-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-jedis img {
+    max-width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .card-jedis button {
+    margin-top: 10px;
+    background-color: #feda4a;
+    color: #111;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .card-jedis button:hover {
+    background-color: #fff;
+    color: #feda4a;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    justify-content: center; /* Center modal */
+    align-items: center; /* Center modal */
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    color: #111;
+  }
+
+  .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close-button:hover,
+  .close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  footer {
+    grid-area: footer;
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    height: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  body {
+    grid-template-areas:
+      "header header"
+      "aside main"
+      "footer footer";
+  }
+
+  header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    align-items: center;
+    background-color: #111;
+    color: #feda4a;
+    padding: 15px;
+  }
+
+  header a {
+    color: #feda4a;
+    text-decoration: none;
+  }
+
+  header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    margin-top: 25px;
+    margin-left: 50px;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+
+  .logo {
+    animation: spin 15s linear infinite;
+  }
+
+  header .barras {
+    display: none;
+  }
+
+  aside {
+    grid-area: aside;
+    background-color: #222;
+    padding: 20px;
+    height: auto;
+  }
+
+  aside h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+
+  aside a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #feda4a;
+    text-decoration: none;
+    margin-top: 15px;
+    margin-right: 15px;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 15px;
+  }
+
+  main {
+    grid-area: main;
+    padding: 20px;
+    background-color: #111;
+    color: #feda4a;
+  }
+
+  .star-wars-intro {
+    background-image: url(../img/fondo_titulo.jpg);
+    overflow: hidden;
+    height: 200px;
+    width: 100%;
+  }
+
+  .intro-text {
+    font-family: "Star Jedi", sans-serif;
+    font-size: 2em;
+    color: #feda4a;
+    text-align: center;
+    text-shadow: 0 0 10px #feda4a;
+    animation: crawl 60s linear infinite;
+  }
+
+  @keyframes crawl {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+
+  main h3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .cards-jedis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+  }
+
+  .card-jedis {
+    perspective: 1000px;
+    margin: 10px;
+  }
+
+  .card-jedis-inner {
+    width: 150px;
+    height: 220px;
+    position: relative;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .card-jedis:hover .card-jedis-inner {
+    transform: rotateY(180deg) scale(1.1);
+  }
+
+  .card-jedis-front,
+  .card-jedis-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 2px solid #feda4a;
+    border-radius: 10px;
+    background-color: #222;
+    color: #feda4a;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(254, 218, 74, 0.5);
+  }
+
+  .card-jedis-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-jedis-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-jedis img {
+    max-width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .card-jedis button {
+    margin-top: 10px;
+    background-color: #feda4a;
+    color: #111;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .card-jedis button:hover {
+    background-color: #fff;
+    color: #feda4a;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    justify-content: center; /* Center modal */
+    align-items: center; /* Center modal */
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    color: #111;
+  }
+
+  .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close-button:hover,
+  .close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  footer {
+    grid-area: footer;
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+
+  
+

@@ -1,0 +1,338 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Star Jedi";
+  src: url("../fonts/starjedi/Starjedi.ttf") format("truetype"),
+    url("../fonts/starjedi/Starjhol.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+/*Pantalla Movil*/
+@media screen and (min-width: 534px) and (max-width: 767px)  {
+  body {
+    display: grid;
+    grid-template-areas:
+      "header"
+      "aside"
+      "main"
+      "footer";
+  }
+
+  header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    align-items: center;
+    background-color: #111;
+    color: #feda4a;
+    padding: 15px;
+  }
+  
+  header a {
+    display: none;
+  }
+  
+  header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    margin-top: 25px;
+    margin-left: 50px;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  .logo {
+    animation: spin 15s linear infinite;
+  }
+  
+  header .barras {
+    display: flex;
+  }
+  
+  aside {
+    grid-area: aside;
+    background-color: #222;
+    padding: 20px;
+    height: 3px;
+  }
+  
+  aside h2 {
+    display: none;
+  }
+  
+  aside a {
+    display: none;
+  }
+  
+  main {
+    grid-area: main;
+    position: relative;
+    min-height: 100vh;
+    background-color: #111;
+  }
+  /* Estilo de la intro */
+  .star-wars-intro {
+    background-image: url(../img/fondo_titulo.jpg);
+    overflow: hidden;
+    height: 200px;
+  }
+  
+  .intro-text {
+    font-family: "Star Jedi", sans-serif; /* Fuente de Star Wars */
+    font-size: 2em;
+    color: #feda4a;
+    text-align: center;
+    text-shadow: 0 0 10px #feda4a;
+  
+    /* Animación de desplazamiento ascendente */
+    animation: crawl 30s linear infinite;
+  }
+  
+  @keyframes crawl {
+    0% {transform: translateY(100%);}
+    100% {transform: translateY(-100%);}
+  }
+  
+  /* Estilo de las cards */
+  
+  main .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 150px;
+    height: 220px;
+    background-color: #222; /* Gris oscuro */
+    border: 2px solid #feda4a;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(254, 218, 74, 0.5);
+  }
+  
+  .card img {
+    max-width: 170px;
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .card p {
+    color: #fff;
+  }
+  
+  .card button {
+    margin-top: 10px;
+    background-color: #feda4a;
+    color: #111;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card button:hover {
+    background-color: #fff;
+    color: #feda4a;
+  }
+  
+  footer {
+    grid-area: footer;
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    height: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  body {
+    grid-template-areas:
+      "header header"
+      "aside main"
+      "footer footer";
+  }
+}
+
+@media (width >= 993px) {
+  body {
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "aside main"
+      "footer main";
+  
+    grid-template-columns: 1fr 5fr;
+  }
+  
+  header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    align-items: center;
+    background-color: #111;
+    color: #feda4a;
+    padding: 15px;
+  }
+  
+  header a {
+    color: #feda4a;
+    text-decoration: none;
+  }
+  
+  header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    margin-top: 25px;
+    margin-left: 50px;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  .logo {
+    animation: spin 15s linear infinite;
+  }
+  
+  header .barras {
+    display: none;
+  }
+  
+  aside {
+    grid-area: aside;
+    background-color: #222;
+    padding: 20px;
+    height: 750px;
+  }
+  
+  aside h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+  
+  aside a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #feda4a;
+    text-decoration: none;
+    margin-top: 15px;
+  }
+  
+  main {
+    grid-area: main;
+    position: relative;
+    min-height: 100vh;
+    background-color: #111;
+  }
+  /* Estilo de la intro */
+  .star-wars-intro {
+    background-image: url(../img/fondo_titulo.jpg);
+    overflow: hidden;
+    height: 200px;
+  }
+  
+  .intro-text {
+    font-family: "Star Jedi", sans-serif; /* Fuente de Star Wars */
+    font-size: 2em;
+    color: #feda4a;
+    text-align: center;
+    text-shadow: 0 0 10px #feda4a;
+  
+    /* Animación de desplazamiento ascendente */
+    animation: crawl 30s linear infinite;
+  }
+  
+  @keyframes crawl {
+    0% {transform: translateY(100%);}
+    100% {transform: translateY(-100%);}
+  }
+  
+  /* Estilo de las cards */
+  
+  main .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 150px;
+    height: 220px;
+    background-color: #222; /* Gris oscuro */
+    border: 2px solid #feda4a;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(254, 218, 74, 0.5);
+  }
+  
+  .card img {
+    max-width: 170px;
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .card p {
+    color: #fff;
+  }
+  
+  .card button {
+    margin-top: 10px;
+    background-color: #feda4a;
+    color: #111;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card button:hover {
+    background-color: #fff;
+    color: #feda4a;
+  }
+  
+  footer {
+    grid-area: footer;
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    height: 20px;
+  }
+}
