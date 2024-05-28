@@ -278,7 +278,9 @@ body {
   }
 
   header a {
-    display: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   header img {
@@ -300,7 +302,7 @@ body {
   }
 
   header .barras {
-    display: flex;
+    display: none;
   }
 
   aside {
